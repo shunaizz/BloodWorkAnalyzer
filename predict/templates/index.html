@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block head %}
+<title>Index</title>
+{% endblock %}
+
+{% block body %}
+<style>body {background-color: rgb(240, 42, 125); }</style>
+
+<div class="container text-center jumbotron">
+    {% if user.is_authenticated %}
+
+        <h1>Welcome</h1>
+    <br>
+    <div class="row">
+        <div class="col-lg-3 col-sm-12">
+            <a class="btn btn-primary" href="{% url 'ml:cholesterol' %}">Cholesterol</a>
+        </div>
+            <br>
+        <div class="col-lg-3 col-sm-12">
+            <a class="btn btn-primary" href="{% url 'ml:breast' %}">Breast</a>
+        </div>
+        <div class="col-lg-3 col-sm-12">
+            <a class="btn btn-primary" href="{% url 'ml:diabetes' %}">
+                Diabetes
+            </a>
+        </div>
+        <div class="col-lg-3 col-sm-12">
+            <a class="btn btn-primary" href="{% url 'ml:cardiac' %}">
+                Cardio
+            </a>
+        </div>
+    </div>
+    {% else %}
+        <a href="{% url 'ml:signup' %}"><h1> Sign Up  </h1></a>
+        <h1> or </h1>
+        <a href="{% url 'login' %}"><h1> Login </h1></a>
+
+        <h2 class="hee">To get started and keep track of your health</h2>
+    {% endif %}
+
+</div>
+{% endblock%}

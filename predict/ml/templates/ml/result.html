@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block head %}
+<title>Result</title>
+{% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+{% block body %}
+<style>body {background-color: aquamarine; }</style>
+<div class="jumbotron container">
+<a class="btn btn-success ad" href="{% url 'ml:history' model=model %}">Previous Data </a>
+<br>
+<br>
+    {% if result == '1' %}
+        <h1>You have {{ model }} problem</h1>
+        {% if model == 'Diabetes' %}
+            {% if level == 'N'%}
+				<h2>Glucose level is Normal</h2>
+            {% elif level == 'H'%}
+				<h2>Glucose level is High</h2>
+            {% elif level == 'V'%}
+				<h2>Glucose level is Very High</h2>
+			{% endif %}
+        {% elif model == 'Cardiac' %}
+            {% if level == 'N'%}
+				<h2>cholesterol level is Normal</h2>
+            {% elif level == 'H'%}
+				<h2>cholesterol level is High</h2>
+            {% elif level == 'V'%}
+				<h2>cholesterol level is Very High</h2>
+			{% endif %}
+        {% elif model == 'Obesity' %}
+            {% if level == 'N'%}
+				<h2>Blood Pressure is Normal</h2>
+            {% elif level == 'H'%}
+				<h2>Blood Pressure is High</h2>
+            {% elif level == 'V'%}
+				<h2>Blood Pressure is Very High</h2>
+			{% endif %}
+        {% endif %}
+    {% else %}
+    <h1>You are all good</h1>
+    {% endif %}
+    <br>
+    <hr style="height: 3px;color: black;background-color: gray">
+    <hr style="height: 2px;color: black;background-color: gray">
+    <p> {{ link.model }} </p>
+    <p> {{ link.Obesity }} </p>
+    <h1>Here are a few links to help you:</h1>
+    <div class="container">
+        {% for link in links %}
+            <h3><a href="{{link.0}} ">{{link.1}}</a></h3>
+        {% endfor %}
+    </div>
+    <h1>Here are a few YouTube Videos for your information:</h1>
+    <div class="container">
+        {% for link in yt %}
+            <h3><a href="{{link.0}} ">{{link.1}}</a></h3>
+        {% endfor %}
+    </div>
+    
+
+</div>
+{% endblock %}

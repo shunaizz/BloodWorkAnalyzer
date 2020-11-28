@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\predict",
+    "\\predict\\ml",
+    "\\predict\\ml\\MlModels",
+    "\\predict\\ml\\MlModels\\__pycache__",
+    "\\predict\\ml\\templates",
+    "\\predict\\ml\\templates\\ml",
+    "\\predict\\predict",
+    "\\predict\\predict\\__pycache__",
+    "\\predict\\static"
+  ],
+  "SelectedNode": "\\predict\\ml\\views.py",
+  "PreviewInSolutionExplorer": false
+}

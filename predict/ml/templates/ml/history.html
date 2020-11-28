@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block head %}
+<title>History</title>
+{% endblock %}
+
+
+{% block nav %}
+    {% if navModel == 'cholesterol' %}
+        <li class="nav-item"><a class="nav-link ntext" href="{% url 'ml:cholesterol' %}">Form</a></li>
+    {% elif navModel == 'cardiac' %}
+        <li class="nav-item"><a class="nav-link ntext" href="{% url 'ml:cardiac' %}">Form</a></li>
+    {% elif navModel == 'diabetes' %}
+        <li class="nav-item"><a class="nav-link ntext" href="{% url 'ml:diabetes' %}">Form</a></li>
+    {% elif navModel == 'breast' %}
+        <li class="nav-item"><a class="nav-link ntext" href="{% url 'ml:breast' %}">Form</a></li>
+    {% endif %}
+{% endblock %}
+
+
+{% block body %}
+<style>body {background-color: aquamarine; }</style>
+
+<div class="container jumbotron">
+    <h1>{{ navModel }} </h1>
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Enrty </h4>
+        </div>
+        <div class="col-md-6">
+            <h4 class=" float-right">Output </h4>
+        </div>
+    </div>
+    {% for record in records %}
+    <div class="row">
+        <div class="col-md-6">
+            <a href="{% url 'ml:record' model=model pk=record.pk %}">
+                <h4>{{ record.created_at.date }} / {{ record.created_at.time }} </h4>
+            </a>
+        </div>
+        <div class="col-md-6">
+            {% if record.output == 0 %}
+                <h4 class=" float-right">Negative </h4>
+            {% elif record.output == 1  %}
+                <h4 class=" float-right">Postivie </h4>
+            {% else %}
+            <h4 class=" float-right">No Result</h4>
+            {% endif %}
+        </div>
+    </div>
+    <!-- <p>{{ record.user.first_name}}</p> -->
+    <!-- <p>{{ record.birthdate }}</p> -->
+    {% endfor %}
+</div>
+{% endblock %}

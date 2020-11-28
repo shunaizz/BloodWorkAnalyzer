@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+
+{% block head %}
+    <title>Login</title>
+{% endblock %}
+
+{% block body %}
+<br>
+<div class="container">
+    <div class="jumbotron">
+        <form method="post" class="inline">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <input type="submit" class="btn btn-success " value="LogIn...!!">
+
+        </form>
+    </div>
+</div>
+{% endblock%}
